@@ -1,0 +1,21 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>dev.mteterel.moonintellij</id>
+    <name>Moonrepo</name>
+    <vendor>Mérill Téterel</vendor>
+    <description><![CDATA[
+        <p><b>This plugin brings Moonrepo workflow controls into IntelliJ-based IDEs.</p>
+        <p>Use it to inspect and run Moonrepo projects, tasks, templates, and common maintenance commands without leaving the IDE.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.terminal</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileIconProvider implementation="dev.mteterel.moonintellij.MoonFileIconProvider" />
+        <fileEditorProvider implementation="dev.mteterel.moonintellij.graph.MoonGraphFileEditorProvider" />
+        <toolWindow factoryClass="dev.mteterel.moonintellij.toolWindow.MoonConsoleToolWindowFactory" id="Moon Workspace" icon="/icons/moon.svg" />
+        <configurationType implementation="dev.mteterel.moonintellij.runconfiguration.MoonRunConfigurationType" />
+        <postStartupActivity implementation="dev.mteterel.moonintellij.startup.MyProjectActivity" />
+    </extensions>
+</idea-plugin>
